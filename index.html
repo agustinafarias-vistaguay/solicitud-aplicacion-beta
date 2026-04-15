@@ -1327,7 +1327,8 @@
             let hasErrors = false;
             const fieldsPerStep = {
                 1: ['nombre-empresa', 'fecha-aplicacion', 'numero-contacto', 'forma-pago'],
-                2: ['cultivo-select', 'hectareas', 'lote-location-input', 'obstaculos'],
+                // "obstaculos" se valida aparte porque son checkboxes por name (sin id único)
+                2: ['cultivo-select', 'hectareas', 'lote-location-input'],
                 3: []
             };
             const fields = fieldsPerStep[currentStep] || [];
