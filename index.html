@@ -163,6 +163,7 @@
         }
 
         @media (max-width: 768px) {
+
             /* Controles Leaflet: bajarlos para que no choquen con la TopBar */
             #map-modal .leaflet-top,
             #map-modal .leaflet-control-container .leaflet-top {
@@ -179,8 +180,7 @@
 
 <body class="bg-surface text-on-surface min-h-screen pb-32">
     <!-- Top AppBar Component (Unified) -->
-    <div class="fixed top-0 left-0 w-full z-[250] px-4 pt-4 pb-2 pointer-events-none"
-        id="unified-top-appbar">
+    <div class="fixed top-0 left-0 w-full z-[250] px-4 pt-4 pb-2 pointer-events-none" id="unified-top-appbar">
         <div class="absolute inset-x-0 top-0 h-[128px] glass border-b border-outline-variant/10 pointer-events-none">
         </div>
         <div class="max-w-xl mx-auto relative">
@@ -193,7 +193,8 @@
                     <h1 class="font-inter text-on-surface font-bold tracking-tight text-lg">Solicitud de
                         Aplicación</h1>
                 </div>
-                <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
                     onclick="toggleHelpSheet(true)">
                     <span class="material-symbols-outlined text-gray-500">help</span>
                 </button>
@@ -229,9 +230,13 @@
                         placeholder="Ej: AgroIndustrias S.A." type="text" />
                 </div>
                 <div class="space-y-2" data-field="fecha-aplicacion">
-                    <label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Fecha
-                        de
-                        Aplicación</label>
+                    <label
+                        class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4 flex items-center gap-1">
+                        Fecha de Aplicación
+                        <span
+                            class="material-symbols-outlined text-[14px] text-primary cursor-pointer align-middle ml-1 hover:opacity-80 normal-case"
+                            onclick="showInfoModal('Tiempo de Asignación', 'El tiempo de búsqueda y coordinación de pilotos es de 24 a 48 horas. Por este motivo, las fechas urgentes se encuentran bloqueadas para garantizar un buen servicio de asignación de vuelo.')">help</span>
+                    </label>
                     <div class="relative">
                         <input id="fecha-aplicacion"
                             class="w-full h-14 px-6 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary-container transition-all shadow-sm cursor-pointer"
@@ -271,7 +276,8 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-2" data-field="cultivo-select">
                         <label <label
-                            class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Cultivo</label>
+                            class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Cultivo
+                            Objetivo</label>
                         <select id="cultivo-select"
                             class="w-full h-14 px-6 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary-container shadow-sm appearance-none">
                             <option value="" disabled selected>Elegir cultivo</option>
@@ -328,7 +334,8 @@
                     </div>
                     <div class="space-y-2" data-field="hectareas">
                         <label
-                            class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Hectáreas</label>
+                            class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Hectáreas
+                            a tratar</label>
                         <input id="hectareas"
                             class="w-full h-14 px-6 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary-container shadow-sm appearance-none"
                             placeholder="0" type="number" min="0" step="1"
@@ -359,13 +366,16 @@
                 </div>
                 <div class="space-y-3" data-field="obstaculos">
                     <label
-                        class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Obstáculos</label>
+                        class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4 flex items-center gap-1">Obstáculos
+                        <span
+                            class="material-symbols-outlined text-[14px] text-primary cursor-pointer hover:opacity-80 normal-case"
+                            onclick="showInfoModal('Obstáculos', 'Esta información se pide para que el piloto pueda programar mejor su vuelo y evitar accidentes.')">help</span></label>
                     <div class="flex flex-wrap gap-2">
                         <label class="cursor-pointer">
-                            <input type="checkbox" name="obstaculos" value="Casco urbano" class="peer hidden">
+                            <input type="checkbox" name="obstaculos" value="Ninguno" class="peer hidden">
                             <div
                                 class="px-5 py-2 rounded-full border border-outline-variant text-sm font-medium text-on-surface-variant hover:bg-[#47C278]/10 transition-all peer-checked:bg-[#47C278] peer-checked:text-white peer-checked:border-[#47C278] select-none">
-                                Casco urbano
+                                Ninguno
                             </div>
                         </label>
                         <label class="cursor-pointer">
@@ -394,6 +404,13 @@
                             <div
                                 class="px-5 py-2 rounded-full border border-outline-variant text-sm font-medium text-on-surface-variant hover:bg-[#47C278]/10 transition-all peer-checked:bg-[#47C278] peer-checked:text-white peer-checked:border-[#47C278] select-none">
                                 Laguna/Arroyo
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="obstaculos" value="Casco urbano" class="peer hidden">
+                            <div
+                                class="px-5 py-2 rounded-full border border-outline-variant text-sm font-medium text-on-surface-variant hover:bg-[#47C278]/10 transition-all peer-checked:bg-[#47C278] peer-checked:text-white peer-checked:border-[#47C278] select-none">
+                                Casco urbano
                             </div>
                         </label>
                         <label class="cursor-pointer">
@@ -591,7 +608,10 @@
                     <!-- Switches: Disponibilidad de agua + Provee corrector/coadyuvante -->
                     <div class="bg-surface-container-low rounded-2xl p-5 space-y-4">
                         <div class="flex items-center justify-between gap-4">
-                            <span class="text-sm font-semibold text-on-surface">Disponibilidad de agua</span>
+                            <span class="text-sm font-semibold text-on-surface flex items-center gap-1.5">Disponibilidad
+                                de agua cerca del lote <span
+                                    class="material-symbols-outlined text-[16px] text-primary cursor-pointer hover:opacity-80"
+                                    onclick="showInfoModal('Agua', 'Marcá esta opción si el piloto tiene acceso a agua a no más de 10 km del lote.')">help</span></span>
                             <label class="relative inline-flex items-center cursor-pointer shrink-0">
                                 <input type="checkbox" id="disponibilidad-agua" class="sr-only peer">
                                 <div
@@ -613,19 +633,21 @@
                         <div class="h-px bg-outline-variant/20"></div>
                         <div class="space-y-2">
                             <label
-                                class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Malezas
-                                objetivo (opcional)</label>
+                                class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Objetivo
+                                del tratamiento (opcional)</label>
                             <input id="malezas-objetivo" type="text"
                                 class="w-full h-12 px-4 bg-surface-container-lowest border-none rounded-xl ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary-container shadow-sm"
-                                placeholder="Describí las malezas objetivo..." />
+                                placeholder="Describí las malezas, enfermedades, plagas objetivo..." />
                         </div>
                     </div>
 
                     <!-- Cultivos vecinos sensibles (switch + conditional select) -->
                     <div class="bg-surface-container-low rounded-2xl p-5 space-y-4">
                         <div class="flex items-center justify-between gap-4">
-                            <label class="text-sm font-semibold text-on-surface">¿Cultivos vecinos
-                                sensibles?</label>
+                            <label class="text-sm font-semibold text-on-surface flex items-center gap-1.5">¿Cultivos
+                                vecinos? <span
+                                    class="material-symbols-outlined text-[16px] text-primary cursor-pointer hover:opacity-80"
+                                    onclick="showInfoModal('Cultivos Vecinos', 'Es importante conocer su ubicación y cuáles son por si pueden sufrir daño por deriva al aplicar los productos.')">help</span></label>
                             <label class="relative inline-flex items-center cursor-pointer shrink-0">
                                 <input type="checkbox" id="cultivos-vecinos-switch" class="sr-only peer"
                                     onchange="toggleCultivosVecinos(this.checked)">
@@ -778,9 +800,7 @@
             <!-- Receta de Siembra -->
             <div class="space-y-4 hidden" id="form-siembra">
                 <div class="space-y-2" data-field="especie-siembra">
-                    <label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Especie
-                        a
-                        \
+                    <label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Especie a
                         sembrar</label>
                     <input id="especie-siembra"
                         class="w-full h-14 px-6 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary-container shadow-sm"
@@ -795,9 +815,10 @@
                 </div>
                 <div class="space-y-2" data-field="presentacion-semilla">
                     <label
-                        class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Presentación
-                        \
-                        del producto</label>
+                        class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4 flex items-center gap-1">Presentación
+                        del producto <span
+                            class="material-symbols-outlined text-[14px] text-primary cursor-pointer hover:opacity-80 normal-case"
+                            onclick="showInfoModal('Presentación', 'Indicá cómo le vas a entregar los insumos al piloto para su logística (Bolsa, Big Bag, Granel).')">help</span></label>
                     <select id="presentacion-semilla"
                         class="w-full h-14 px-6 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary-container shadow-sm appearance-none">
                         <option value="" disabled selected>Seleccionar presentación</option>
@@ -887,33 +908,89 @@
 
     <!-- Success Modal -->
     <div class="hidden fixed inset-0 z-[2000] flex items-center justify-center p-6" id="success-modal">
-        <div class="absolute inset-0 bg-on-surface/50 backdrop-blur-sm"></div>
+        <div class="absolute inset-0 bg-on-surface/50 backdrop-blur-sm" onclick="location.reload()"></div>
         <div
-            class="relative bg-white w-full max-w-md rounded-[2.5rem] shadow-2xl p-10 text-center flex flex-col items-center gap-6">
+            class="relative bg-white w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 text-center flex flex-col items-center gap-6">
+            <button type="button"
+                class="absolute top-6 right-6 text-on-surface-variant hover:text-error transition-colors"
+                onclick="location.reload()">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
             <div
                 class="w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center">
                 <span class="material-symbols-outlined text-5xl"
                     style="font-variation-settings: 'FILL' 1;">check_circle</span>
             </div>
             <div class="space-y-2">
-                <h3 class="text-3xl font-black text-on-surface tracking-tight">¡Solicitud enviada con éxito!
-                </h3>
+                <h3 class="text-3xl font-black text-on-surface tracking-tight">¡Solicitud enviada con éxito!</h3>
                 <p class="text-on-surface-variant leading-relaxed">
-                    Hemos recibido tu solicitud de aplicación con dron. Un cordinador de Vistaguay revisará los datos y
-                    se
-                    comunicará a la brevedad para indicarte el piloto Vistaguay Expert asignado.
+                    Hemos recibido tu solicitud de aplicación con dron. Un coordinador de Vistaguay revisará los datos y
+                    se comunicará a la brevedad para indicarte el piloto Vistaguay Expert asignado.
                 </p>
                 <p class="text-sm text-on-surface-variant/70 italic">
-                    Este proceso tarda por lo general entre 24/48 horas. Si tenes alguna consulta escribinos.
+                    Este proceso tarda entre 24/48 horas hábiles. Si tenés alguna consulta escribinos.
                 </p>
             </div>
-            <button id="modal-confirm-btn"
-                class="w-full h-14 bg-[#47C278] text-white font-bold rounded-full shadow-lg shadow-[#47C278]/20 active:scale-95 transition-all">
-                Contactanos
+            <div class="w-full flex flex-col gap-3 mt-2">
+                <button onclick="location.reload()"
+                    class="w-full h-14 bg-[#47C278] text-white font-bold rounded-full shadow-lg shadow-[#47C278]/20 active:scale-95 transition-all">
+                    Realizar otra solicitud
+                </button>
+                <a href="https://api.whatsapp.com/send?phone=5493516887507" target="_blank"
+                    class="w-full h-14 bg-surface-container border-2 border-outline-variant/30 text-on-surface font-bold rounded-full flex items-center justify-center gap-2 active:scale-95 transition-all">
+                    Contactar a soporte
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="hidden fixed inset-0 z-[2500] flex items-center justify-center p-6" id="info-modal">
+        <div class="absolute inset-0 bg-on-surface/50 backdrop-blur-sm" onclick="closeInfoModal()"></div>
+        <div
+            class="relative bg-white w-full max-w-sm rounded-[2rem] shadow-2xl p-8 text-center flex flex-col items-center gap-4 transition-all transform">
+            <button type="button"
+                class="absolute top-4 right-4 text-on-surface-variant hover:text-error transition-colors"
+                onclick="closeInfoModal()">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <div class="w-16 h-16 bg-[#47C278]/20 text-[#47C278] rounded-full flex items-center justify-center mb-2">
+                <span class="material-symbols-outlined text-3xl">lightbulb</span>
+            </div>
+            <h3 class="text-xl font-black text-on-surface tracking-tight" id="info-modal-title">Título</h3>
+            <p class="text-on-surface-variant leading-relaxed text-sm" id="info-modal-text">Texto explicativo.</p>
+            <button
+                class="w-full h-12 mt-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold rounded-full transition-all active:scale-95"
+                onclick="closeInfoModal()">
+                Entendido
             </button>
         </div>
     </div>
     <script>
+        // === Lógica de Fechas Restringidas ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('fecha-aplicacion');
+            if (dateInput) {
+                const hoy = new Date();
+
+                // Sumamos 3 días. Ej: Si hoy es 16, bloquea 16, 17 y 18. Mínimo = 19.
+                const minDateObj = new Date();
+                minDateObj.setDate(hoy.getDate() + 3);
+                const minDate = minDateObj.toISOString().split('T')[0];
+
+                // Seteamos el mínimo y nos aseguramos de no limitar el futuro
+                dateInput.setAttribute('min', minDate);
+                dateInput.removeAttribute('max');
+            }
+        });
+
+        // === Lógica del Info Modal Reutilizable ===
+        function showInfoModal(title, text) {
+            document.getElementById('info-modal-title').textContent = title;
+            document.getElementById('info-modal-text').textContent = text;
+            document.getElementById('info-modal').classList.remove('hidden');
+        }
+        function closeInfoModal() {
+            document.getElementById('info-modal').classList.add('hidden');
+        }
         // === Lógica del Mapa (Leaflet + Nominatim) ===
         const ubicacionLoteTrigger = document.getElementById('ubicacion-lote-trigger');
         const mapModal = document.getElementById('map-modal');
@@ -1656,8 +1733,7 @@
                     Completá este formulario para iniciar tu pedido de Aplicación con Dron. Nosotros nos
                     encargamos de
                     seleccionar al piloto de la Red Experts más capacitado para asegurar el éxito de tu
-                    operación y te
-                    contactaremos para gestionar tu vuelo.
+                    operación.
                 </p>
                 <button
                     class="w-full h-14 bg-[#47C278] text-white font-bold rounded-full shadow-lg shadow-[#47C278]/20 active:scale-95 transition-all mt-4"
