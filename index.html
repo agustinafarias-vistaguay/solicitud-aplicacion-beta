@@ -240,7 +240,9 @@
                     <div class="relative">
                         <input id="fecha-aplicacion"
                             class="w-full h-14 px-6 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary-container transition-all shadow-sm cursor-pointer"
-                            type="date" onclick="this.showPicker()" />
+                            type="text" placeholder="dd/mm/aaaa" onfocus="(this.type='date')"
+                            onblur="if(!this.value)this.type='text'" onclick="this.showPicker()"
+                            onkeydown="return false" />
                         <span
                             class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none opacity-60">calendar_today</span>
                     </div>
@@ -275,7 +277,7 @@
             <div class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-2" data-field="cultivo-select">
-                        <label <label
+                        <label
                             class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-4">Cultivo
                             Objetivo</label>
                         <select id="cultivo-select"
@@ -284,6 +286,7 @@
                             <option value="Soja">Soja</option>
                             <option value="Maíz">Maíz</option>
                             <option value="Trigo">Trigo</option>
+                            <option value="Barbecho">Barbecho</option>
                             <option value="Girasol">Girasol</option>
                             <option value="Cebada">Cebada</option>
                             <option value="Ajo">Ajo</option>
