@@ -4,13 +4,13 @@
 Actualizar las opciones de cultivo para incluir "Barbecho" en todos los selectores relevantes.
 
 ## Registro de Procesos
-- [x] Análisis: Se detectó que el input de fecha requería dos clics para abrir el calendario en algunos navegadores móviles.
-- [x] Ejecución: Se añadió `showPicker()` tanto al `onfocus` como al `onclick`, y se aseguró que el cambio de `type='date'` ocurra en ambos eventos para mayor responsividad.
-- [x] Verificación: Se eliminó una duplicación accidental de etiquetas en la implementación anterior.
+- [x] Análisis: Se determinó que el "type switching" causaba fricción (doble clic) en móviles, afectando la experiencia de usuario.
+- [x] Ejecución: Se revirtió el input `fecha-aplicacion` a su estado original (`type="date"`) con un solo evento `onclick="this.showPicker()"`.
+- [x] Verificación: Se priorizó la interactividad fluida sobre la presencia del placeholder visual.
 
 ## Diff Log
-- **Anterior:** El calendario solo abría al segundo clic después de enfocar el campo.
-- **Real:** El calendario abre al primer clic o toque sobre el campo.
+- **Anterior:** Intento de implementar placeholder dinámico que introdujo el problema del doble clic.
+- **Real:** Regreso al estado funcional estable con un solo clic para abrir el calendario.
 
 ## Próximos Pasos
 - Ninguno pendiente para esta tarea.
